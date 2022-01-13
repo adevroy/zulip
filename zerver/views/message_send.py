@@ -238,7 +238,7 @@ def send_message_backend(
         # the user's realm - but we keep it around for backward compatibility.
         raise JsonableError(_("User not authorized for this query"))
 
-    if client.name in ["zephyr_mirror", "irc_mirror", "jabber_mirror", "JabberMirror"]:
+    if forged is True:
         # Here's how security works for mirroring:
         #
         # For private messages, the message must be (1) both sent and
