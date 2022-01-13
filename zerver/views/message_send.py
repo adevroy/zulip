@@ -270,14 +270,14 @@ def send_message_backend(
         try:
             mirror_sender = create_mirrored_message_users(request, user_profile, message_to)
         except InvalidMirrorInput:
-            raise JsonableError(_("Invalid mirrored message"))
+            raise JsonableError(_("Invalid mirrored message 1"))
 
         if client.name == "zephyr_mirror" and not user_profile.realm.is_zephyr_mirror_realm:
             raise JsonableError(_("Zephyr mirroring is not allowed in this organization"))
         sender = mirror_sender
     else:
         if "sender" in request.POST:
-            raise JsonableError(_("Invalid mirrored message"))
+            raise JsonableError(_("Invalid mirrored message 2"))
         sender = user_profile
 
     if (delivery_type == "send_later" or delivery_type == "remind") and defer_until is None:
